@@ -11,15 +11,17 @@ def main(page: ft.Page):
                        bgcolor=ft.colors.BLUE,
                        color=ft.colors.WHITE)
 
-    quote_text = ft.Text(value='""',
-                         size=32,
-                         color=ft.colors.BLACK,
-                         weight=ft.FontWeight.BOLD,
-                         font_family='Architects Daughter')
-    quote_author = ft.Text(value="",
-                           size=15,
-                           color=ft.colors.BLACK87,
-                           italic=True)
+    quote_text = ft.Text(
+        value='""',
+        size=32,
+        #  color=ft.colors.BLACK,
+        weight=ft.FontWeight.BOLD,
+        font_family='Architects Daughter')
+    quote_author = ft.Text(
+        value="",
+        size=15,
+        #    color=ft.colors.BLACK87,
+        italic=True)
 
     def button_clicked(e):
         print('Button clicked')
@@ -42,6 +44,7 @@ def main(page: ft.Page):
 def getRandomQuotes():
     api_url = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=837122&format=json&lang=en'
     response = requests.get(api_url)
+    print(response.text)
     data = response.json()
     # print(data)
     return data['quoteText'], data['quoteAuthor']
