@@ -7,9 +7,25 @@ def main(page: ft.Page):
         'Architects Daughter': 'assets/ArchitectsDaughter-Regular.ttf',
     }
     page.padding = ft.Padding(20, 35, 20, 20)
-    appbar = ft.AppBar(title=ft.Text(value="Flutter using Flet"),
-                       bgcolor=ft.colors.BLUE,
-                       color=ft.colors.WHITE)
+
+    # page.theme_mode = ft.ThemeMode.LIGHT
+
+    def open_repo(e):
+        page.launch_url('https://github.com/iqfareez/flet-hello')
+
+    appbar = ft.AppBar(
+        title=ft.Text(value="Flutter using Flet"),
+        bgcolor=ft.colors.BLUE,
+        color=ft.colors.WHITE,
+        actions=[ft.IconButton(icon=ft.icons.CODE, on_click=open_repo)])
+
+    def refresh_quotes(e):
+        print('Button clicked')
+        quote, author = getRandomQuotes()
+        # print(quote, author)
+        quote_text.value = f'"{quote}"'
+        quote_author.value = author
+        page.update()
 
     quote_text = ft.Text(
         value='""',
@@ -23,15 +39,7 @@ def main(page: ft.Page):
         #    color=ft.colors.BLACK87,
         italic=True)
 
-    def button_clicked(e):
-        print('Button clicked')
-        quote, author = getRandomQuotes()
-        # print(quote, author)
-        quote_text.value = f'"{quote}"'
-        quote_author.value = author
-        page.update()
-
-    refreshButton = ft.ElevatedButton(text="Refresh", on_click=button_clicked)
+    refreshButton = ft.ElevatedButton(text="Refresh", on_click=refresh_quotes)
     sizedBox = ft.Container(height=20)
     page.controls.append(appbar)
     page.controls.append(quote_text)
