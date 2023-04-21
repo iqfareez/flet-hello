@@ -18,4 +18,8 @@ Simple random inspirational quotes app. First hands-on with [Flet](https://flet.
 1. Clone the repo
 2. Create virtual environment (optional) `python -m venv venv`
 3. Install required libraries `pip install -r requirements.txt`
-4. Run the app `python main.dart`
+4. Run the app `python main.py`
+
+## Deploy live
+
+https://flet.dev/docs/guides/python/deploying-web-app/
